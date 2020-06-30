@@ -4,7 +4,6 @@ import exam.quizbankContext.application.BlankQuizApplicationService;
 import exam.quizbankContext.application.CreateBlankQuizCommand;
 import exam.quizbankContext.domain.model.quiz.BlankQuiz;
 import exam.quizbankContext.domain.model.quiz.BlankQuizId;
-import exam.quizbankContext.infrastructure.MemoryBlankQuizReadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +15,10 @@ import java.util.List;
 public class BlankQuizController {
 
     private final BlankQuizApplicationService blankQuizApplicationService;
-    private final MemoryBlankQuizReadRepository blankQuizReadRepository;
 
     @Autowired
-    public BlankQuizController(BlankQuizApplicationService blankQuizApplicationService,
-                               MemoryBlankQuizReadRepository blankQuizReadRepository) {
+    public BlankQuizController(BlankQuizApplicationService blankQuizApplicationService) {
         this.blankQuizApplicationService = blankQuizApplicationService;
-        this.blankQuizReadRepository = blankQuizReadRepository;
     }
 
     @PostMapping("/blankQuiz")
@@ -41,6 +37,6 @@ public class BlankQuizController {
 
     @GetMapping("/blankQuiz")
     List<BlankQuiz> getAll() {
-        return blankQuizReadRepository.getAllByReversedOrder();
+        return blankQuizApplicationService.getAll();
     }
 }

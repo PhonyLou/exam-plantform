@@ -4,7 +4,6 @@ import exam.quizbankContext.application.BlankQuizApplicationService;
 import exam.quizbankContext.application.CreateBlankQuizCommand;
 import exam.quizbankContext.domain.model.quiz.BlankQuiz;
 import exam.quizbankContext.domain.model.quiz.BlankQuizId;
-import exam.quizbankContext.infrastructure.MemoryBlankQuizReadRepository;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -23,12 +22,11 @@ public class BlankQuizControllerTest {
         CreateBlankQuizCommand command = new CreateBlankQuizCommand(quizId, score);
 
         BlankQuizApplicationService blankQuizApplicationService = mock(BlankQuizApplicationService.class);
-        MemoryBlankQuizReadRepository blankQuizReadRepository = mock(MemoryBlankQuizReadRepository.class);
         doReturn(new BlankQuizId(id.getId()))
                 .when(blankQuizApplicationService)
                 .create(any(CreateBlankQuizCommand.class));
 
-        BlankQuizController blankQuizController = new BlankQuizController(blankQuizApplicationService, blankQuizReadRepository);
+        BlankQuizController blankQuizController = new BlankQuizController(blankQuizApplicationService);
         BlankQuizDTO actual = blankQuizController.create(command);
 
         assertThat(actual.getUri(), is("blankQuiz/" + id.getId()));
@@ -41,12 +39,11 @@ public class BlankQuizControllerTest {
         int score = 10;
 
         BlankQuizApplicationService blankQuizApplicationService = mock(BlankQuizApplicationService.class);
-        MemoryBlankQuizReadRepository blankQuizReadRepository = mock(MemoryBlankQuizReadRepository.class);
         doReturn(BlankQuiz.create(id, quizId, score))
                 .when(blankQuizApplicationService)
                 .getBlankQuiz(eq(quizId));
 
-        BlankQuizController blankQuizController = new BlankQuizController(blankQuizApplicationService, blankQuizReadRepository);
+        BlankQuizController blankQuizController = new BlankQuizController(blankQuizApplicationService);
         BlankQuiz actual = blankQuizController.getBlankQuiz(quizId);
 
         assertThat(actual.getQuizId(), is(quizId));
