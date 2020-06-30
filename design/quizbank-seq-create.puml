@@ -1,0 +1,13 @@
+@startuml
+actor Teacher
+Teacher -> BlankQuizController : POST /blankQuiz
+BlankQuizController -> BlankQuizController: transform()
+BlankQuizController -> BlankQuizApplicationService : create()
+BlankQuizApplicationService -> BlankQuizRepository: nextBlankQuizId()
+entity BlankQuiz
+BlankQuizApplicationService -> BlankQuiz : create()
+BlankQuizApplicationService -> BlankQuizRepository: save()
+database blankQuizDB
+BlankQuizRepository -> blankQuizDB: INSERT ***
+
+@enduml
