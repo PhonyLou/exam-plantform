@@ -25,4 +25,12 @@ public class BlankQuiz implements Entity<BlankQuiz> {
     public static BlankQuiz create(final BlankQuizId id, final String quizId, final int score) {
         return new BlankQuiz(id, quizId, score);
     }
+
+    public String getQuizId() {
+        return quizId;
+    }
+
+    public int getScore() {
+        return score;
+    }
 }
