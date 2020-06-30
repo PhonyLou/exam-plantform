@@ -2,15 +2,14 @@ package exam.quizbankContext.userInterface;
 
 import exam.quizbankContext.application.BlankQuizApplicationService;
 import exam.quizbankContext.application.CreateBlankQuizCommand;
-import exam.quizbankContext.domain.model.quiz.BlankQuiz;
 import exam.quizbankContext.domain.model.quiz.BlankQuizId;
 import org.junit.jupiter.api.Test;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 
 public class BlankQuizControllerTest {
     @Test
