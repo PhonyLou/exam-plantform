@@ -6,6 +6,10 @@ import exam.quizbankContext.domain.model.quiz.BlankQuiz;
 import exam.quizbankContext.domain.model.quiz.BlankQuizId;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -47,5 +51,21 @@ public class BlankQuizControllerTest {
         BlankQuiz actual = blankQuizController.getBlankQuiz(quizId);
 
         assertThat(actual.getQuizId(), is(quizId));
+    }
+
+    @Test
+    void should_return_list_of_BlankQuiz_when_getAll_given_no_argument() {
+        BlankQuizId id = new BlankQuizId("quiz-aaa-bbb-ccc");
+        String quizId = "quizid-f500ee0d-3c9f-494a-bc13-993250053194";
+        int score = 10;
+
+        BlankQuizApplicationService blankQuizApplicationService = mock(BlankQuizApplicationService.class);
+        doReturn(Collections.singletonList(BlankQuiz.create(id, quizId, score)))
+                .when(blankQuizApplicationService).getAll();
+
+        BlankQuizController blankQuizController = new BlankQuizController(blankQuizApplicationService);
+        List<BlankQuiz> actual = blankQuizController.getAll();
+
+        assertThat(actual.get(0).getQuizId(), is(quizId));
     }
 }
