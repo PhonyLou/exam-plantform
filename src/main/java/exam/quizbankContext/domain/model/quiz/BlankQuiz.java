@@ -1,6 +1,6 @@
 package exam.quizbankContext.domain.model.quiz;
 
-import exam.paperContext.domain.shared.Entity;
+import exam.quizbankContext.domain.shared.Entity;
 
 public class BlankQuiz implements Entity<BlankQuiz> {
     private final BlankQuizId id;

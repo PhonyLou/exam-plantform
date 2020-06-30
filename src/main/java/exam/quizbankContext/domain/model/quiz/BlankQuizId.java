@@ -1,6 +1,6 @@
 package exam.quizbankContext.domain.model.quiz;
 
-import exam.paperContext.domain.shared.ValueObject;
+import exam.quizbankContext.domain.shared.ValueObject;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
