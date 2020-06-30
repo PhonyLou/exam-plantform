@@ -6,7 +6,6 @@ import exam.quizbankContext.domain.model.quiz.BlankQuiz;
 import exam.quizbankContext.domain.model.quiz.BlankQuizId;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

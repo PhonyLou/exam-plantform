@@ -2,9 +2,6 @@ package exam.quizbankContext.application;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Value;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor

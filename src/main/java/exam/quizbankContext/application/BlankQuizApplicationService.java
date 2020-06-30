@@ -1,7 +1,5 @@
 package exam.quizbankContext.application;
 
-import exam.paperContext.domain.service.BlankQuizClient;
-import exam.paperContext.domain.service.BlankQuizDto;
 import exam.quizbankContext.domain.model.quiz.BlankQuiz;
 import exam.quizbankContext.domain.model.quiz.BlankQuizId;
 import exam.quizbankContext.domain.model.quiz.BlankQuizRepository;
@@ -12,15 +10,10 @@ import java.util.List;
 
 @Service
 public class BlankQuizApplicationService {
-    private BlankQuizRepository blankQuizRepository;
-    private BlankQuizClient blankQuizClient;
-
-    private List<BlankQuizDto> getBlankQuizzesByIds(List<String> blankQuizIds) {
-        return blankQuizClient.getBlankQuizzesByIds(blankQuizIds);
-    }
+    private final BlankQuizRepository blankQuizRepository;
 
     @Autowired
-    public BlankQuizApplicationService(BlankQuizRepository blankQuizRepository) {
+    public BlankQuizApplicationService(final BlankQuizRepository blankQuizRepository) {
         this.blankQuizRepository = blankQuizRepository;
     }
 

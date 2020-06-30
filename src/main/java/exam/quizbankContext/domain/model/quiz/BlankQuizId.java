@@ -9,7 +9,7 @@ import java.util.Objects;
 @Getter
 @AllArgsConstructor
 public class BlankQuizId implements ValueObject<BlankQuizId> {
-    private String id;
+    private final String id;
 
     public static BlankQuizId nextId() {
         //TODO Generate ID

@@ -11,5 +11,5 @@ public class BlankQuizDTO {
 
     public static BlankQuizDTO from(final BlankQuizId blankQuizId) {
         return new BlankQuizDTO("blankQuiz/" + blankQuizId);
-    };
+    }
 }
